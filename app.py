@@ -1,10 +1,24 @@
 import streamlit as st
+from streamlit_chat import message
+# from streamlit_extras.colored_header import colored_header
+# from streamlit_extras.add_vertical_space import add_vertical_space
+from hugchat import hugchat
+from hugchat.login import Login
+from llm_model import chat_with_gpt,gpt_response
+from decouple import config
 from curriculum import curriculum_making
+from interview import interview_topic
 from learning_topics import learning_topics
 from assessment import assessment
-from interview import interview_topic
 
-def main():
+
+st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
+
+user_input = None
+hf_email = config("hf_email")
+hf_pass = config("hf_pass")
+
+def first_page():
     # Sidebar contents
     with st.sidebar:
         st.title('🤗💬 Edufrent')
@@ -13,26 +27,32 @@ def main():
         ## About
         "Unlock your potential with technology-powered learning!"
         ''')
-        st.write('Made with ❤️ by Gagana, Siddhanth, Anil')
+        
+        # Button states
+        cur = st.button("Curriculum")
+        lrn = st.button("Learning material")
+        asm = st.button("Assessment creator")
+        inv = st.button("Interview prep")
+        for i in range(15):
+            st.write('')
+        st.write('Made with ❤️ by ')
+        st.write(' Gagana')
+        st.write(' Siddhanth')
+        st.write(' Anil Kumar')
+
+
 
     st.title("Edufrent")
     st.write("Please provide your information.")
 
-    # Buttons for different functions
-    button_curriculum = st.button("Curriculum")
-    button_learning_topics = st.button("Learning Topics")
-    button_assessment = st.button("Assignments Valuation")
-    button_interview = st.button("Interviews Viva Voce")
+    # Execute functions based on button states
+    page_option = st.selectbox("Select an option", ('Curriculum creator', 'Learning topics','Assessment Bot','Interview Bot'))
 
-    # Button actions
-    if button_curriculum:
+    if page_option == "Curriculum creator":
         curriculum_making()
-    elif button_learning_topics:
+    if page_option == "Learning topics":
         learning_topics()
-    elif button_assessment:
-        assessment()
-    elif button_interview:
-        interview_topic()
 
-if __name__ == "__main__":
-    main()
+
+# Run the first_page() function
+first_page()

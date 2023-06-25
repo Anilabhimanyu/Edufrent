@@ -11,7 +11,7 @@ def curriculum_making():
     if st.button("Generate Curriculum"):
         # Check if subject is provided
         if subject:
-            prompt = f"user enters the subject name as {subject}, now you have to give the main topics and then you have to mention subtopics of it as a bullet points, its better to divide the topics into complex, easy and medium"
+            prompt = f"user enters subject name as {subject}, now you have to make all topics undercomes in that, make sure to give all topics that undercomes, also make sure to give all subtopics that undercomes in that each topic as bullet points if possible can you give best books links for reference"
             curriculum = gpt_response(prompt)
             st.subheader("Curriculum")
             st.write(curriculum)

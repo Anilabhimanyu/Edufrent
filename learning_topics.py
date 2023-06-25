@@ -9,10 +9,10 @@ def learning_topics():
     subject = st.text_input("enter a subject")
     topic=st.text_input("enter a topic")
     complexity = st.radio("Complexity",["Easy","Medium","Hard"])
-    if st.button("Generate Curriculum"):
+    if st.button("Explore Topic"):
         # Check if subject is provided
         if subject and topic and complexity:
-            prompt = f"user enters subject as {subject} and subtopic as {topic} and the level of complexity as {complexity}, by considering all these parameters you have to make the notes simple and understandable manner, you can use bullet points and numbers for better representation"
+            prompt = f"Act as a guide for student or user,try to give 100% efforts to make personalized learning, because user enters subject choosen as {subject} and within that he choose particular topic as {topic}, now your role is based on their complexity i.e, {complexity}, you have to explaing the topic what user requires with suitable example and real time applications, make the bullet and arrow points for better understanding"
             curriculum = gpt_response(prompt)
             st.subheader("Learn here")
             st.write(curriculum)

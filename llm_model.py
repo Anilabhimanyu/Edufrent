@@ -13,8 +13,8 @@ def gpt_response(prompt):
     response = openai.Completion.create(    
         engine="text-davinci-003",
         prompt=prompt,  
-        max_tokens=50,
-        temperature=0.7,
+        max_tokens=2000,
+        temperature=0.1,
         n=1,
         stop=None,
     )
@@ -30,7 +30,7 @@ def chat_with_gpt(message_history):
         engine="text-davinci-003",
         prompt=prompt,
         max_tokens=50,
-        temperature=0.7,
+        temperature=0.1,
         n=1,
         stop=None,
     )

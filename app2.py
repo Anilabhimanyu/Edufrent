@@ -23,6 +23,8 @@ if 'messages' not in st.session_state:
     st.session_state['messages'] = [
         {"role": "system", "content": "You are a helpful assistant."}
     ]
+
+
 if 'model_name' not in st.session_state:
     st.session_state['model_name'] = []
 if 'cost' not in st.session_state:
@@ -35,6 +37,7 @@ if 'total_cost' not in st.session_state:
 # Sidebar - let user choose model, show total cost of current conversation, and let user clear the current conversation
 # st.sidebar.title("Assessment tester")
 # model_name = st.sidebar.radio("Choose a model:", ("GPT-3.5", "GPT-4"))
+
 with st.sidebar:
     st.title("Assessment tester")
     subject = st.text_input("Enter a subject: ", "", key="subject")
@@ -76,7 +79,7 @@ def generate_response(prompt):
         model=model,
         messages=st.session_state['messages'],
         max_tokens=100,
-        temperature=0.8
+        temperature=0.1
     )
     response = completion.choices[0].message.content
     st.session_state['messages'].append({"role": "assistant", "content": response})

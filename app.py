@@ -52,6 +52,11 @@ def first_page():
         curriculum_making()
     if page_option == "Learning topics":
         learning_topics()
+    if page_option=="Assessment Bot":
+        st.write("you can use this feature in app2.py by running streamlit run app2.py")
+    if page_option=="Interview Bot":
+        st.write("you can use this feature in app2.py by running streamlit run app2.py")
+    
 
 
 # Run the first_page() function
